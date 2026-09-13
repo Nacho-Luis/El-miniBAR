@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL miniBAR - Gastrobar & Tapas en Madrid</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --red-brand: #c80b2e;
+            --dark-bg: #0a0a0a;
+            --card-bg: #141414;
+            --light-text: #f5f5f5;
+            --gray-text: #a0a0a0;
+            --border-color: #262626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 2px solid var(--red-brand);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-el {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-right: 4px;
+        }
+
+        .logo-mini {
+            color: var(--red-brand);
+            font-weight: 900;
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+        }
+
+        .logo-bar {
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--red-brand);
+        }
+
+        .btn-call {
+            background-color: var(--red-brand);
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(200, 11, 46, 0.15);
+            border: 1px solid var(--red-brand);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .award-badge i {
+            color: #ffd700;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--red-brand);
+            margin: 0.5rem auto 0 auto;
+        }
+
+        .about-section {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--red-brand);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            color: var(--light-text);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--red-brand);
+            border-color: var(--red-brand);
+            color: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-card.featured {
+            border: 2px solid var(--red-brand);
+            position: relative;
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -12px;
+            right: 15px;
+            background: var(--red-brand);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .item-price {
+            color: var(--red-brand);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .item-desc {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .allergens-info {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-box i {
+            color: var(--red-brand);
+            margin-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            background: #222;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--red-brand);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #050505;
+            border-top: 1px solid var(--border-color);
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav a {
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container">
+            <span class="logo-el">EL</span>
+            <span class="logo-mini">mini</span>
+            <span class="logo-bar">BAR</span>
+        </a>
+        <nav>
+            <a href="#historia">Nosotros</a>
+            <a href="#carta">Carta</a>
+            <a href="#contacto">Contacto</a>
+            <a href="tel:696055194" class="btn-call"><i class="fas fa-phone"></i> 696 055 194</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="award-badge">
+            <i class="fas fa-trophy"></i> 1.ᵉʳ Premio "De Tapas por Madrid 2013"
+        </div>
+        <h1>Tapeo, Raciones y Buen Ambiente</h1>
+        <p>Disfruta de la auténtica gastronomía de bar en el corazón de la ciudad. Tapas creativas, raciones generosas y cócteles únicos.</p>
+    </section>
+
+    <div class="container">
+        
+        <section id="historia" class="about-section">
+            <h2 class="section-title" style="text-align: left;">Sobre EL miniBAR</h2>
+            <p>En <strong>EL miniBAR</strong> combinamos la cercanía del bar tradicional madrileño con una propuesta gastronómica innovadora y sabrosa. Nos apasiona cuidar cada ingrediente y ofrecer un ambiente acogedor para compartir entre amigos.</p>
+            <br>
+            <p>Nuestro mayor orgullo es la <strong>Tapa Bretón</strong>, galardonada con el primer premio del certamen <em>De Tapas por Madrid</em>, reflejo del cariño y la calidad que ponemos en cada uno de nuestros platos.</p>
+        </section>
+
+        <section id="carta">
+            <h2 class="section-title">Nuestra Carta</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showCategory('raciones')">Raciones & Tapas</button>
+                <button class="tab-btn" onclick="showCategory('ensaladas')">Ensaladas</button>
+                <button class="tab-btn" onclick="showCategory('bocadillos')">Bocadillos</button>
+                <button class="tab-btn" onclick="showCategory('desayunos')">Desayunos</button>
+                <button class="tab-btn" onclick="showCategory('postres')">Postres</button>
+                <button class="tab-btn" onclick="showCategory('bebidas')">Bebidas & Cócteles</button>
+            </div>
+
+            <!-- RACIONES -->
+            <div id="cat-raciones" class="menu-grid">
+                <div class="menu-card featured">
+                    <span class="featured-tag">Premio 2013</span>
+                    <div class="item-header">
+                        <span class="item-title">Tapa Bretón</span>
+                    </div>
+                    <p class="item-desc">Ganadora del 1.ᵉʳ Premio del certamen "De Tapas por Madrid 2013".</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Tartar de Atún Rojo</span>
+                        <span class="item-price">19.20€</span>
+                    </div>
+                    <p class="item-desc">Con guacamole de mango y alioli de soja.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Hamburguesa Wagyu 100% (150g)</span>
+                        <span class="item-price">15.90€</span>
+                    </div>
+                    <p class="item-desc">Con lechuga, tomate, queso, bacon y patatas gajo.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Croquetas Caseras de Jamón</span>
+                        <span class="item-price">6.90€ / 13.40€</span>
+                    </div>
+                    <p class="item-desc">Disponibles en media ración o ración entera.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Papas Arrugás con Mojos</span>
+                        <span class="item-price">6.90€ / 11.40€</span>
+                    </div>
+                    <p class="item-desc">Patatas cocidas al estilo canario con mojos picón y verde.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Rabas de Calamar Empanadas</span>
+                        <span class="item-price">8.10€ / 14.30€</span>
+                    </div>
+                    <p class="item-desc">Con polvo de kikos y salsa ali-oli.</p>
+                </div>
+            </div>
+
+            <!-- ENSALADAS -->
+            <div id="cat-ensaladas" class="menu-grid" style="display: none;">
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Ensalada Burrata</span>
+                        <span class="item-price">11.70€</span>
+                    </div>
+                    <p class="item-desc">Tomate kumato, burrata, pesto de nueces y reducción de vermut.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Ensalada de Quesos</span>
+                        <span class="item-price">12.00€</span>
+                    </div>
+                    <p class="item-desc">Variedad de quesos, canónigos, nueces y aliño de miel y mostaza.</p>
+                </div>
+            </div>
+
+            <!-- BOCADILLOS -->
+            <div id="cat-bocadillos" class="menu-grid" style="display: none;">
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Bocadillo de Pollo Caramelizado</span>
+                        <span class="item-price">7.00€</span>
+                    </div>
+                    <p class="item-desc">Con lechuga, mayonesa, tomate y queso.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Lomo, Berenjena Asada y Brie</span>
+                        <span class="item-price">4.10€ / 7.00€</span>
+                    </div>
+                    <p class="item-desc">Disponible en montadito o bocadillo completo.</p>
+                </div>
+            </div>
+
+            <!-- DESAYUNOS -->
+            <div id="cat-desayunos" class="menu-grid" style="display: none;">
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Desayuno Básico</span>
+                        <span class="item-price">2.70€</span>
+                    </div>
+                    <p class="item-desc">Café o té + Croissant / Muffin / Tostada con aceite o mermelada.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Desayuno Especial</span>
+                        <span class="item-price">4.00€</span>
+                    </div>
+                    <p class="item-desc">Café o té + Pincho de tortilla / Huevos revueltos / Tostada con jamón serrano.</p>
+                </div>
+            </div>
+
+            <!-- POSTRES -->
+            <div id="cat-postres" class="menu-grid" style="display: none;">
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Tarta de Queso Casera</span>
+                        <span class="item-price">6.50€</span>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Brownie de Chocolate</span>
+                        <span class="item-price">6.90€</span>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Pastel de Belém</span>
+                        <span class="item-price">6.50€</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEBIDAS -->
+            <div id="cat-bebidas" class="menu-grid" style="display: none;">
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Cóctel Oro Negro</span>
+                        <span class="item-price">8.50€</span>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Mojito Clásico / Fresa</span>
+                        <span class="item-price">8.00€</span>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="item-header">
+                        <span class="item-title">Cerveza Mahou Doble</span>
+                        <span class="item-price">3.70€</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="allergens-info">
+                <i class="fas fa-info-circle"></i> <strong>Información sobre alérgenos (Reglamento UE 1169/2011):</strong> Disponemos de la información detallada sobre alérgenos de cada plato a disposición del cliente. Por favor, consulte a nuestro personal antes de realizar su pedido si padece alguna alergia o intolerancia.
+            </div>
+        </section>
+
+        <section id="contacto" style="margin-top: 4rem;">
+            <h2 class="section-title">Información y Reservas</h2>
+            <div class="contact-grid">
+                <div class="info-box">
+                    <h3><i class="fas fa-map-marker-alt"></i> Visítanos</h3>
+                    <p>EL miniBAR Madrid</p>
+                    <p>Consulta nuestro mapa para llegar fácilmente.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/ElminiBAR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/BarElminiBAR" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/BarElminiBAR" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fas fa-clock"></i> Horarios</h3>
+                    <p><strong>Desayunos:</strong> 10:00h - 12:00h</p>
+                    <p><strong>Cocina & Copas:</strong> Abierto mediodía y noche.</p>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fas fa-phone-alt"></i> Reservas</h3>
+                    <p>Haz tu reserva directamente por teléfono:</p>
+                    <p style="font-size: 1.3rem; font-weight: bold; color: var(--red-brand); margin: 0.5rem 0;">696 055 194</p>
+                    <p style="font-size: 0.8rem; color: var(--gray-text);">*Los datos aportados en llamadas o mensajes solo se utilizarán para la gestión de su reserva.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 EL miniBAR - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function showCategory(catName) {
+            // Ocultar todas las categorías
+            const grids = document.querySelectorAll('.menu-grid');
+            grids.forEach(grid => grid.style.display = 'none');
+
+            // Quitar clase activa a los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Mostrar la seleccionada
+            document.getElementById('cat-' + catName).style.display = 'grid';
+
+            // Activar botón pulsado
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
