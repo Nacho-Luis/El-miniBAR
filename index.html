@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EL miniBAR | Carta Oficial</title>
+    <title>EL miniBAR | Carta / Menu</title>
     <style>
         :root {
             --primary: #d91c1c;
@@ -17,18 +17,30 @@
         
         header {
             background-color: white;
-            padding: 20px 15px;
+            padding: 15px;
             text-align: center;
             border-bottom: 3px solid var(--primary);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        .logo { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; }
+        .logo { font-size: 2.2rem; font-weight: 900; }
         .logo span { color: var(--primary); }
-        .social-contact { font-size: 0.85rem; color: var(--gray); margin-top: 5px; }
-        .social-contact a { color: var(--primary); text-decoration: none; font-weight: bold; }
+        .lang-switch { margin-top: 10px; }
+        .lang-btn {
+            background: #fff;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 4px;
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
 
         nav {
             display: flex;
@@ -41,32 +53,21 @@
         nav a {
             color: white;
             text-decoration: none;
-            padding: 8px 14px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             background: rgba(255,255,255,0.1);
         }
 
         .container { max-width: 800px; margin: 0 auto; padding: 20px 15px; }
         
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--primary);
             border-bottom: 2px solid var(--primary);
             padding-bottom: 5px;
-            margin: 30px 0 15px 0;
+            margin: 25px 0 15px 0;
             text-transform: uppercase;
-        }
-        
-        .schedule-badge {
-            background-color: var(--primary);
-            color: white;
-            font-size: 0.85rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            display: inline-block;
-            margin-left: 8px;
-            vertical-align: middle;
         }
 
         .menu-card {
@@ -87,13 +88,8 @@
             background: #eee;
             padding: 2px 6px;
             border-radius: 4px;
-            margin-left: 5px;
+            margin-left: 4px;
             color: var(--dark);
-        }
-
-        .highlight-card {
-            background: #fff8f8;
-            border: 2px solid var(--primary);
         }
 
         .fixed-call {
@@ -115,495 +111,144 @@
 
     <header>
         <div class="logo">EL <span>miniBAR</span></div>
-        <div class="social-contact">
-            📞 <a href="tel:696055194">696 055 194</a> | 
-            <span>@BarElminiBAR</span>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('es')">🇪🇸 Español</button>
+            <button class="lang-btn" onclick="setLanguage('en')">🇬🇧 English</button>
         </div>
     </header>
 
     <nav>
-        <a href="#desayunos">Desayunos</a>
-        <a href="#raciones">Tapas y Raciones</a>
-        <a href="#ensaladas">Ensaladas</a>
-        <a href="#bocadillos">Bocadillos</a>
-        <a href="#postres">Postres</a>
-        <a href="#vinos">Vinos</a>
-        <a href="#cocteles">Cócteles y Cervezas</a>
-        <a href="#copas">Copas</a>
+        <a href="#desayunos" class="lang-es">Desayunos</a><a href="#desayunos" class="lang-en" style="display:none;">Breakfast</a>
+        <a href="#raciones" class="lang-es">Tapas y Raciones</a><a href="#raciones" class="lang-en" style="display:none;">Tapas & Portions</a>
+        <a href="#ensaladas" class="lang-es">Ensaladas</a><a href="#ensaladas" class="lang-en" style="display:none;">Salads</a>
+        <a href="#bocadillos" class="lang-es">Bocadillos</a><a href="#bocadillos" class="lang-en" style="display:none;">Sandwiches</a>
+        <a href="#postres" class="lang-es">Postres</a><a href="#postres" class="lang-en" style="display:none;">Desserts</a>
+        <a href="#bebidas" class="lang-es">Bebidas</a><a href="#bebidas" class="lang-en" style="display:none;">Drinks</a>
     </nav>
 
     <div class="container">
 
-        <!-- DESAYUNOS -->
-        <h2 id="desayunos" class="section-title">Desayunos <span class="schedule-badge">10:00h a 12:00h</span></h2>
-        
+        <!-- DESAYUNOS / BREAKFAST -->
+        <h2 id="desayunos" class="section-title">
+            <span class="lang-es">Desayunos (10:00h a 12:00h)</span>
+            <span class="lang-en" style="display:none;">Breakfast (10:00 AM to 12:00 PM)</span>
+        </h2>
         <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">Opciones Básico (Café o té + A elegir)</span>
+                <span class="item-title lang-es">Opción Básica (Café o té + opción a elegir)</span>
+                <span class="item-title lang-en" style="display:none;">Basic Option (Coffee or Tea + choice)</span>
                 <span class="item-price">2.60€</span>
             </div>
-            <p class="item-desc">A elegir entre: Croissant, Muffins, Tostada con mermelada y mantequilla, Tostada con aceite y tomate.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Opciones Especiales (Café o té + A elegir)</span>
-                <span class="item-price">3.90€</span>
-            </div>
-            <p class="item-desc">A elegir entre: Tostada con tomate y queso, Tostada de jamón york y queso, Tostada con aceite, tomate y jamón serrano, Tostada con atún en aceite, Pincho de tortilla, Huevos revueltos, Tortilla francesa, Bacon con queso (4.00€), Montaditos (Lomo con berenjena asada, brie y alioli / Chistorra, bacon y pimiento verde / Rabas de calamar con alioli / Jamón serrano con tomate).</p>
+            <p class="item-desc lang-es">Croissant, Muffins, Tostada con mermelada y mantequilla, Tostada con aceite y tomate.</p>
+            <p class="item-desc lang-en" style="display:none;">Croissant, Muffins, Toast with jam and butter, Toast with olive oil and tomato.</p>
         </div>
 
         <!-- TAPAS Y RACIONES -->
-        <h2 id="raciones" class="section-title">Tapas y Raciones</h2>
-        <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 15px;">* Nota: La <strong>Tapa</strong> corresponde a Media Ración y la <strong>Ración</strong> a la porción completa.</p>
+        <h2 id="raciones" class="section-title">
+            <span class="lang-es">Tapas y Raciones</span>
+            <span class="lang-en" style="display:none;">Tapas & Portions</span>
+        </h2>
 
-        <div class="menu-card highlight-card">
+        <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">🏆 Tapa Bretón</span>
+                <span class="item-title lang-es">Dados de pechuga de pollo con salsa de queso picante</span>
+                <span class="item-title lang-en" style="display:none;">Chicken breast cubes with spicy cheese sauce</span>
+                <span class="item-price">
+                    <span class="price-badge"><span class="lang-es">Tapa:</span><span class="lang-en" style="display:none;">Half:</span> 8.90€</span>
+                    <span class="price-badge"><span class="lang-es">Ración:</span><span class="lang-en" style="display:none;">Full:</span> 14.20€</span>
+                </span>
             </div>
-            <p class="item-desc">Primer premio del certamen "De tapas por Madrid 2013". Especialidad de la casa.</p>
+            <p class="item-desc lang-es">Con tortillas de trigo (estilo mexicano).</p>
+            <p class="item-desc lang-en" style="display:none;">With tortillas Mexican style.</p>
         </div>
 
         <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">Dados de pechuga de pollo con salsa de queso picante</span>
-                <span class="item-price"><span class="price-badge">Tapa: 8.90€</span> <span class="price-badge">Ración: 14.20€</span></span>
-            </div>
-            <p class="item-desc">Con tortillas de trigo (estilo mexicano).</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Papas arrugás con mojos canarios</span>
-                <span class="item-price"><span class="price-badge">Tapa: 6.90€</span> <span class="price-badge">Ración: 11.20€</span></span>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Brioche de gambas</span>
-                <span class="item-price">10.20€</span>
-            </div>
-            <p class="item-desc">Con ensalada de col y zanahoria con salsa picante.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Croquetas caseras de Jamón</span>
-                <span class="item-price"><span class="price-badge">Tapa: 6.80€</span> <span class="price-badge">Ración: 13.20€</span></span>
+                <span class="item-title lang-es">Papas arrugás con mojos canarios</span>
+                <span class="item-title lang-en" style="display:none;">Wrinkled boiled potatoes with Canarian sauce</span>
+                <span class="item-price">
+                    <span class="price-badge"><span class="lang-es">Tapa:</span><span class="lang-en" style="display:none;">Half:</span> 6.90€</span>
+                    <span class="price-badge"><span class="lang-es">Ración:</span><span class="lang-en" style="display:none;">Full:</span> 11.20€</span>
+                </span>
             </div>
         </div>
 
         <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">Croquetas caseras de Gambas al ajillo</span>
-                <span class="item-price"><span class="price-badge">Tapa: 7.40€</span> <span class="price-badge">Ración: 14.20€</span></span>
+                <span class="item-title lang-es">Croquetas caseras de Jamón</span>
+                <span class="item-title lang-en" style="display:none;">Homemade Ham croquettes</span>
+                <span class="item-price">
+                    <span class="price-badge"><span class="lang-es">Tapa:</span><span class="lang-en" style="display:none;">Half:</span> 6.80€</span>
+                    <span class="price-badge"><span class="lang-es">Ración:</span><span class="lang-en" style="display:none;">Full:</span> 13.20€</span>
+                </span>
             </div>
         </div>
 
         <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">Tartar de atún rojo</span>
+                <span class="item-title lang-es">Tartar de atún rojo con guacamole de mango y alioli de soja</span>
+                <span class="item-title lang-en" style="display:none;">Red tuna tartar with mango guacamole and soya aioli sauce</span>
                 <span class="item-price">19.00€</span>
             </div>
-            <p class="item-desc">Con guacamole de mango y alioli de soja.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Tacos de solomillo ibérico</span>
-                <span class="item-price"><span class="price-badge">Tapa: 11.00€</span> <span class="price-badge">Ración: 19.50€</span></span>
-            </div>
-            <p class="item-desc">Salteados con verduritas de temporada.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Rabas de calamar empanadas</span>
-                <span class="item-price"><span class="price-badge">Tapa: 8.00€</span> <span class="price-badge">Ración: 14.00€</span></span>
-            </div>
-            <p class="item-desc">Con polvo de kikos y salsa ali-oli.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Rollitos crujientes de jabalí</span>
-                <span class="item-price"><span class="price-badge">Tapa: 10.40€</span> <span class="price-badge">Ración: 18.70€</span></span>
-            </div>
-            <p class="item-desc">Con salsa de champiñones Portobello.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Tajadas de bacalao con gambones al ajillo</span>
-                <span class="item-price"><span class="price-badge">Tapa: 11.00€</span> <span class="price-badge">Ración: 19.90€</span></span>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Tataki de lomo de atún rojo</span>
-                <span class="item-price"><span class="price-badge">Tapa: 9.30€</span> <span class="price-badge">Ración: 17.30€</span></span>
-            </div>
-            <p class="item-desc">Con ensalada de wakame.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Fajitas de carne mechada</span>
-                <span class="item-price">4.90€ / ud</span>
-            </div>
-            <p class="item-desc">Con guacamole y pico de gallo.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Confit de pato</span>
-                <span class="item-price">16.20€</span>
-            </div>
-            <p class="item-desc">Con salsa de reducción de oporto y ciruelas pasas.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Pankitos</span>
-                <span class="item-price"><span class="price-badge">Tapa: 8.30€</span> <span class="price-badge">Ración: 14.10€</span></span>
-            </div>
-            <p class="item-desc">Tiras de pollo en leche de coco con empanado japonés y tres salsas.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Rollitos de berenjena y bacon</span>
-                <span class="item-price"><span class="price-badge">Tapa: 8.20€</span> <span class="price-badge">Ración: 14.80€</span></span>
-            </div>
-            <p class="item-desc">Con salsa de tomate a la naranja y queso feta.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Salmorejo</span>
-                <span class="item-price"><span class="price-badge">Tapa: 6.80€</span> <span class="price-badge">Ración: 11.70€</span></span>
-            </div>
-            <p class="item-desc">Con guarnición de huevo cocido y virutas de jamón.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Queso manchego curado con trufa negra</span>
-                <span class="item-price"><span class="price-badge">Tapa: 8.20€</span> <span class="price-badge">Ración: 15.30€</span></span>
-            </div>
-            <p class="item-desc">Quesería Sanabria.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Hamburguesa 230 grs. 100% Wagyu</span>
-                <span class="item-price">17.00€</span>
-            </div>
-            <p class="item-desc">Lechuga, tomate, queso, bacon y patatas gajo.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Queso semicurado de cabra a la plancha</span>
-                <span class="item-price"><span class="price-badge">Tapa: 10.00€</span> <span class="price-badge">Ración: 17.50€</span></span>
-            </div>
-            <p class="item-desc">Con costra caliente, fundido, sobre mermelada de tomate con aceite de cilantro.</p>
         </div>
 
         <!-- ENSALADAS -->
-        <h2 id="ensaladas" class="section-title">Ensaladas</h2>
-
+        <h2 id="ensaladas" class="section-title">
+            <span class="lang-es">Ensaladas</span>
+            <span class="lang-en" style="display:none;">Salads</span>
+        </h2>
         <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">Ensalada Campera</span>
+                <span class="item-title lang-es">Ensalada Campera</span>
+                <span class="item-title lang-en" style="display:none;">Campera Salad</span>
                 <span class="item-price">11.70€</span>
             </div>
-            <p class="item-desc">Lechugas, patata, tomate, piquillos, atún, huevo duro y pimiento verde.</p>
+            <p class="item-desc lang-es">Lechugas, patata, tomate, piquillos, atún, huevo duro, pimiento verde.</p>
+            <p class="item-desc lang-en" style="display:none;">Lettuce, potatoes, tomato, red and green peppers, tuna, boiled egg.</p>
         </div>
 
+        <!-- POSTRES -->
+        <h2 id="postres" class="section-title">
+            <span class="lang-es">Postres Caseros</span>
+            <span class="lang-en" style="display:none;">Homemade Desserts</span>
+        </h2>
         <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">Ensalada De Quesos</span>
-                <span class="item-price">12.00€</span>
-            </div>
-            <p class="item-desc">Lechugas, distintos quesos, canónigos, nueces y aliño de miel y mostaza.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Ensalada Ahumados</span>
-                <span class="item-price">11.90€</span>
-            </div>
-            <p class="item-desc">Lechugas, salmón ahumado, bacon y mango con aliño de mostaza y miel.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Ensalada César</span>
-                <span class="item-price">11.70€</span>
-            </div>
-            <p class="item-desc">Lechugas, pollo crujiente, croutons y parmesano con aliño césar.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Tomates Aliñados</span>
-                <span class="item-price">10.80€</span>
-            </div>
-            <p class="item-desc">Tomate kumato y lechuga variada al aliño de romero y ajo.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Ensalada Burrata</span>
-                <span class="item-price">11.70€</span>
-            </div>
-            <p class="item-desc">Kumato y burrata sobre lechugas con pesto de nueces y reducción de vermut.</p>
-        </div>
-
-        <!-- BOCADILLOS Y MONTADOS -->
-        <h2 id="bocadillos" class="section-title">Bocadillos y Montados</h2>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Pollo Caramelizado</span>
-                <span class="item-price"><span class="price-badge">Bocadillo: 7.00€</span></span>
-            </div>
-            <p class="item-desc">Lechuga, mayonesa, tomate y queso.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Lomo Caramelizado</span>
-                <span class="item-price"><span class="price-badge">Bocadillo: 7.00€</span></span>
-            </div>
-            <p class="item-desc">Lechuga, mayonesa, tomate y queso.</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Chistorra, bacon y pimiento verde</span>
-                <span class="item-price"><span class="price-badge">Montado: 4.00€</span> <span class="price-badge">Bocadillo: 7.00€</span></span>
+                <span class="item-title lang-es">Tarta de Queso</span>
+                <span class="item-title lang-en" style="display:none;">Cheesecake</span>
+                <span class="item-price">6.40€</span>
             </div>
         </div>
-
         <div class="menu-card">
             <div class="item-header">
-                <span class="item-title">Lomo, berenjena asada, brie y alioli</span>
-                <span class="item-price"><span class="price-badge">Montado: 4.00€</span> <span class="price-badge">Bocadillo: 7.00€</span></span>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Jamón Serrano con tomate</span>
-                <span class="item-price"><span class="price-badge">Montado: 4.00€</span> <span class="price-badge">Bocadillo: 7.00€</span></span>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Bacon con queso</span>
-                <span class="item-price"><span class="price-badge">Montado: 4.00€</span> <span class="price-badge">Bocadillo: 7.00€</span></span>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Rabas de calamar con alioli</span>
-                <span class="item-price"><span class="price-badge">Montado: 4.00€</span> <span class="price-badge">Bocadillo: 7.00€</span></span>
-            </div>
-        </div>
-
-        <!-- POSTRES CASEROS -->
-        <h2 id="postres" class="section-title">Postres Caseros</h2>
-
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Brownie</span>
+                <span class="item-title lang-es">Brownie</span>
+                <span class="item-title lang-en" style="display:none;">Brownie</span>
                 <span class="item-price">6.90€</span>
             </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Tarta de Queso</span>
-                <span class="item-price">6.40€</span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Pastel de Belém</span>
-                <span class="item-price">6.40€</span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Piña Calda (Natural en almíbar)</span>
-                <span class="item-price">6.30€</span>
-            </div>
-        </div>
-
-        <!-- VINOS -->
-        <h2 id="vinos" class="section-title">Vinos</h2>
-        
-        <h3 style="color: var(--primary); margin: 10px 0;">Tintos</h3>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Marqués del Puerto (Crianza 2018, D.O. Rioja)</span>
-                <span class="item-price"><span class="price-badge">Copa: 3.80€</span> <span class="price-badge">Botella: 18.50€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Pagos de Valderracín (Tempranillo, D.O. Ribera del Duero)</span>
-                <span class="item-price"><span class="price-badge">Botella: 19.90€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Delirio (Joven Merlot, D.O. Sierra Nevada)</span>
-                <span class="item-price"><span class="price-badge">Copa: 3.90€</span> <span class="price-badge">Botella: 19.00€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Habla la Tierra (Tempranillo/Syrah, D.O. Extremadura)</span>
-                <span class="item-price"><span class="price-badge">Botella: 22.00€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Gotas de Habla (Crianza Syrah/Tempranillo, D.O. Extremadura)</span>
-                <span class="item-price"><span class="price-badge">Botella: 19.50€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">José Fernando (Tempranillo, D.O. Ribera del Duero)</span>
-                <span class="item-price"><span class="price-badge">Copa: 3.90€</span> <span class="price-badge">Botella: 19.00€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Otium (Tempranillo-Merlot, D.O. Castilla la Mancha)</span>
-                <span class="item-price"><span class="price-badge">Botella: 28.00€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Tinto de Verano / Sangría</span>
-                <span class="item-price">4.00€</span>
-            </div>
-        </div>
-
-        <h3 style="color: var(--primary); margin: 15px 0 10px 0;">Blancos y Cava</h3>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Folklore (Godello, D.O. Bierzo)</span>
-                <span class="item-price"><span class="price-badge">Botella: 20.30€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">José Fernando (Verdejo, D.O. Rueda)</span>
-                <span class="item-price"><span class="price-badge">Copa: 3.50€</span> <span class="price-badge">Botella: 17.20€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Atenea (Semidulce Airén, D.O. Tierra de Castilla)</span>
-                <span class="item-price"><span class="price-badge">Copa: 3.40€</span> <span class="price-badge">Botella: 15.20€</span></span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Blanco de Verano</span>
-                <span class="item-price">4.00€</span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Cava</span>
-                <span class="item-price"><span class="price-badge">Copa: 3.30€</span> <span class="price-badge">Botella: 17.00€</span></span>
-            </div>
-        </div>
-
-        <!-- CÓCTELES Y CERVEZAS -->
-        <h2 id="cocteles" class="section-title">Cócteles y Cervezas</h2>
-
-        <h3 style="color: var(--primary); margin: 10px 0;">Cócteles (8.00€ - 8.50€)</h3>
-        <div class="menu-card">
-            <p class="item-desc" style="font-size: 0.95rem; color: var(--dark);">
-                Oro Negro (8.50€), Ruso Blanco (8.50€), Negroni (8.50€), Mojito / Mojito Fresa (8.00€), Daikiri / Daikiri Fresa (8.50€), Caipiriña / Caipiriña Fresa (8.50€), Caipiroska / Caipiroska Fresa (8.50€), Piña Loca (8.50€), Aperol/Campari Spritz (8.00€), Aperol/Campari Naranja (8.50€), Licores (4.00€), Fernet Branca (7.50€), Chupitos (3.00€).
-            </p>
-        </div>
-
-        <h3 style="color: var(--primary); margin: 15px 0 10px 0;">Cervezas</h3>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Mahou Caña (200 ml) / Mahou 1/5</span>
-                <span class="item-price">1.80€</span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Mahou Doble (500 ml)</span>
-                <span class="item-price">3.60€</span>
-            </div>
-            <p class="item-desc">También disponible con gaseosa o limón.</p>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Mahou 1/3 / Mahou Sin Alcohol 1/3 / Tostada Sin 1/3</span>
-                <span class="item-price">3.30€ - 3.60€</span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Mahou Maestra 1/3 / Mahou Sin Gluten 1/3</span>
-                <span class="item-price">3.60€ - 3.80€</span>
-            </div>
-        </div>
-        <div class="menu-card">
-            <div class="item-header">
-                <span class="item-title">Alhambra Reserva 1925</span>
-                <span class="item-price">3.90€</span>
-            </div>
-        </div>
-
-        <!-- COPAS Y COMBINADOS -->
-        <h2 id="copas" class="section-title">Bebidas y Copas</h2>
-        
-        <div class="menu-card">
-            <div class="item-header"><span class="item-title">Gins</span></div>
-            <p class="item-desc">Beefeater (7.00€), Seagram's (7.00€), Tanqueray (7.00€), Larios Dry (7.00€), Larios 12 (7.50€), Bombay Sapphire (7.50€), Rives Special (7.50€), Tanqueray Ten (8.50€), Martin Miller's (8.50€), Hendrick's (8.50€), Nordés (8.50€).</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header"><span class="item-title">Ron</span></div>
-            <p class="item-desc">Negrita (6.00€), Barceló (7.50€), Cacique (7.50€), Brugal Añejo (7.50€), Santa Teresa (7.50€), Arehucas (7.50€), Bacardi (7.50€), Havana 3 (7.50€), Matusalen (7.50€), Legendario Elixir (7.50€), Brugal Extra Viejo (8.00€), Havana 7 (8.50€), Kraken (9.00€).</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header"><span class="item-title">Whisky & Bourbon</span></div>
-            <p class="item-desc">Cutty Sark (6.00€), Ballantine's (7.50€), White Label (7.50€), Johnnie Walker (7.50€), J&B (7.50€), DYC (7.50€), Jameson (7.50€), 100 Pipers (7.50€), Four Roses (8.00€), Jim Beam (8.00€), Jack Daniel's (8.50€), DYC 8 años (8.50€), Cardhú (8.50€), Johnnie Walker Black Label (9.00€).</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header"><span class="item-title">Vodka</span></div>
-            <p class="item-desc">Sobieski (6.00€), Absolut (7.50€), Sobieski Negro (7.50€), Sobieski Estate (7.50€).</p>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-header"><span class="item-title">Cafés y Refrescos</span></div>
-            <p class="item-desc">Café solo/con leche/cortado (2.00€), Capuchino (2.50€), Carajillo (2.60€), refrescos 350ml (3.50€), Agua mineral (2.00€), Agua con gas (2.90€).</p>
         </div>
 
     </div>
 
-    <a href="tel:696055194" class="fixed-call">📞 Reservar / Llamar</a>
+    <a href="tel:696055194" class="fixed-call">📞 <span class="lang-es">Llamar</span><span class="lang-en" style="display:none;">Call</span></a>
 
+    <script>
+        function setLanguage(lang) {
+            const esElements = document.querySelectorAll('.lang-es');
+            const enElements = document.querySelectorAll('.lang-en');
+            const buttons = document.querySelectorAll('.lang-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (lang === 'en') {
+                esElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'inline-block');
+                buttons[1].classList.add('active');
+            } else {
+                enElements.forEach(el => el.style.display = 'none');
+                esElements.forEach(el => el.style.display = 'inline-block');
+                buttons[0].classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
